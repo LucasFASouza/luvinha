@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://coj4laedma6ka"]
+
+[ext_resource type="Texture2D" uid="uid://cy3k8aq3co052" path="res://assets/sprites/knight.png" id="1_4s2hg"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_m0vcl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66e1n"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goqtc"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pls0b"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asgui"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8jtu"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c804a"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7rg0"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu3br"]
+atlas = ExtResource("1_4s2hg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13um8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66e1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goqtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pls0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asgui")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8jtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c804a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7rg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu3br")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nt26k"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 128
+script = ExtResource("1_m0vcl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_13um8")
+animation = &"hit"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_nt26k")

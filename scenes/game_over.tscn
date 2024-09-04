@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://cek6w23r6w8ch"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_xfg2w"]
+[ext_resource type="FontFile" uid="uid://btxph5mbgy7lr" path="res://assets/fonts/PixelOperator8.ttf" id="2_8qxai"]
+[ext_resource type="FontFile" uid="uid://8wog3s3vx18d" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_6oiyc"]
+
+[node name="GameOver" type="Control"]
+z_index = 20
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xfg2w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1137.0
+offset_top = -764.0
+offset_right = 1735.0
+offset_bottom = 897.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="Mensagem" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -102.0
+offset_right = 372.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_8qxai")
+theme_override_font_sizes/font_size = 32
+text = "No  jogo outras chances você pode ter, mas na vida real isso não vai acontecer!
+Leia os procedimentos, utilize as luvas e proteja suas mãos."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Game Over" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -188.0
+offset_right = 261.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_6oiyc")
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = 175.0
+offset_right = 252.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_6oiyc")
+theme_override_font_sizes/font_size = 32
+text = "Jogar Novamente
+"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
