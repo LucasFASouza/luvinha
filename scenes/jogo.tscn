@@ -289,7 +289,7 @@ position = Vector2(0, 35)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D"]
+[node name="Left" type="TouchScreenButton" parent="Camera2D"]
 z_index = 20
 position = Vector2(-138, 17)
 scale = Vector2(1.5, 1.5)
@@ -297,7 +297,7 @@ texture_normal = ExtResource("5_6gql2")
 texture_pressed = ExtResource("6_siho8")
 action = "move_left"
 
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="Camera2D"]
+[node name="Right" type="TouchScreenButton" parent="Camera2D"]
 z_index = 20
 position = Vector2(90, 17)
 scale = Vector2(1.5, 1.5)
@@ -332,6 +332,7 @@ scale = Vector2(1.04464, 1)
 sprite_frames = SubResource("SpriteFrames_tiwl7")
 
 [node name="GameOver" parent="." instance=ExtResource("8_qrejd")]
+visible = false
 z_index = 30
 z_as_relative = false
 scale = Vector2(0.32, 0.32)
