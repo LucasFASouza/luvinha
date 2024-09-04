@@ -33,19 +33,20 @@ func _ready():
 func _process(delta: float) -> void:
 	if lives > 0:
 		level_timer += delta
-		seconds = fmod(level_timer, 60)
-		seconds_left = MAX_SECONDS - seconds
+		seconds_left = MAX_SECONDS - level_timer
+		print(seconds_left)
 
 		time_label.text = str(seconds_left)
 
 		if seconds_left <= 10:
 			time_label.set("theme_override_colors/font_color", Color(1.0,0.0,0.0,1.0))
 
-			if seconds_left == 0:
-				spawn_timer.stop()
-				player.queue_free()
-				game_over.finish_game(score)
-				lives = 0
+		if seconds_left <= 0:
+			print("ACABOU")
+			spawn_timer.stop()
+			player.queue_free()
+			game_over.finish_game(score)
+			lives = 0
 
 
 func _on_spawn_timer_timeout():
@@ -75,7 +76,7 @@ func _start_spawn_timer():
 		var max_interval = 1.5
 		var base_interval = lerp(min_interval, max_interval, time_fraction)
 		
-		var random_variation = randf_range(-0.1, 0.1)
+		var random_variation = randf_range(-0.1, 0.2)
 		var interval = base_interval + random_variation
 		
 		interval = clamp(interval, min_interval, max_interval)
