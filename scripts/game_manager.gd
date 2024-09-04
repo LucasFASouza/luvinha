@@ -16,10 +16,12 @@ var lives = 3
 @onready var lives_label: Label = $Lives
 
 var level_timer: float = 0
-var seconds: int = 0
+var last_seconds: int = 0
 var seconds_left: int = 0
 const MAX_SECONDS: int = 60
 @onready var time_label: Label = %Time
+
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready():
@@ -34,19 +36,22 @@ func _process(delta: float) -> void:
 	if lives > 0:
 		level_timer += delta
 		seconds_left = MAX_SECONDS - level_timer
-		print(seconds_left)
 
 		time_label.text = str(seconds_left)
 
 		if seconds_left <= 10:
 			time_label.set("theme_override_colors/font_color", Color(1.0,0.0,0.0,1.0))
 
+			if last_seconds != seconds_left:
+				audio_stream_player_2d.play()
+
 		if seconds_left <= 0:
-			print("ACABOU")
 			spawn_timer.stop()
 			player.queue_free()
 			game_over.finish_game(score)
 			lives = 0
+
+		last_seconds = seconds_left
 
 
 func _on_spawn_timer_timeout():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8grcyb0hb68u"]
+[gd_scene load_steps=18 format=3 uid="uid://b8grcyb0hb68u"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_2cbjh"]
 [ext_resource type="PackedScene" uid="uid://coj4laedma6ka" path="res://scenes/player.tscn" id="1_fk6ce"]
 [ext_resource type="Texture2D" uid="uid://c8u33jvaswot4" path="res://assets/sprites/world_tileset.png" id="2_myx18"]
+[ext_resource type="AudioStream" uid="uid://b4nhs2fapcmv2" path="res://assets/sounds/tap.wav" id="3_qv7n1"]
 [ext_resource type="FontFile" uid="uid://8wog3s3vx18d" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_btyaf"]
 [ext_resource type="Texture2D" uid="uid://coxuxjtal8xlp" path="res://assets/sprites/arrow L.png" id="5_6gql2"]
 [ext_resource type="Script" path="res://scripts/ballon.gd" id="5_n8jis"]
@@ -270,6 +271,10 @@ theme_override_fonts/font = ExtResource("4_btyaf")
 theme_override_font_sizes/font_size = 8
 text = "30"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("3_qv7n1")
+bus = &"SFX"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hrepm")
