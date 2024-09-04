@@ -3,6 +3,7 @@ extends Node
 var spawn_timer: Timer
 const GLOVE = preload("res://scenes/glove.tscn")
 const ENEMY = preload("res://scenes/enemy.tscn")
+var enemy_count: int = 0
 
 @onready var ballon: Node2D = %Ballon
 @onready var player: CharacterBody2D = %Player
@@ -17,16 +18,16 @@ var lives = 3
 var level_timer: float = 0
 var seconds: int = 0
 var seconds_left: int = 0
-const MAX_SECONDS: int = 30
+const MAX_SECONDS: int = 60
 @onready var time_label: Label = %Time
+
 
 func _ready():
 	spawn_timer = Timer.new()
-	spawn_timer.wait_time = 1
 	spawn_timer.one_shot = false
 	spawn_timer.connect("timeout", Callable(self, "_on_spawn_timer_timeout"))
 	add_child(spawn_timer)
-	spawn_timer.start()
+	_start_spawn_timer()
 	
 
 func _process(delta: float) -> void:
@@ -52,16 +53,35 @@ func _on_spawn_timer_timeout():
 		var random_x = randf_range(-72, 72)
 		
 		var instance: Node2D
-		if randi() % 5 < 4:
+		if enemy_count < 5:
 			instance = ENEMY.instantiate()
+			enemy_count += 1
 		else:
 			instance = GLOVE.instantiate()
+			enemy_count = 0
 		
 		instance.set_game_manager(self)	
 		instance.position = Vector2(random_x, -100)
 		instance.rotation_degrees = randf_range(-45, 45) 
 			
 		add_child(instance)
+		_start_spawn_timer()
+
+
+func _start_spawn_timer():
+	if lives > 0:
+		var time_fraction = float(seconds_left) / MAX_SECONDS
+		var min_interval = 0.2
+		var max_interval = 1.5
+		var base_interval = lerp(min_interval, max_interval, time_fraction)
+		
+		var random_variation = randf_range(-0.1, 0.1)
+		var interval = base_interval + random_variation
+		
+		interval = clamp(interval, min_interval, max_interval)
+		
+		spawn_timer.wait_time = interval
+		spawn_timer.start()
 
 
 func add_or_subtract_points(amount):

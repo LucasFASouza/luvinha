@@ -11,6 +11,7 @@ func _ready():
 	
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 
+
 func show_message(lives):
 	timer.stop()
 	
@@ -21,6 +22,7 @@ func show_message(lives):
 
 	self.visible = true
 	timer.start()
+
 
 func _on_timer_timeout():
 	self.visible = false
