@@ -53,7 +53,7 @@ func _on_spawn_timer_timeout():
 		var random_x = randf_range(-72, 72)
 		
 		var instance: Node2D
-		if enemy_count < 5:
+		if enemy_count < 4:
 			instance = ENEMY.instantiate()
 			enemy_count += 1
 		else:

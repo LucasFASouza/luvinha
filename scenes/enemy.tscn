@@ -53,6 +53,11 @@ animations = [{
 "loop": true,
 "name": &"3",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eso35"]
@@ -163,7 +168,7 @@ script = ExtResource("1_ibpnp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_ec6it")
-animation = &"3"
+animation = &"new_animation"
 autoplay = "0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
