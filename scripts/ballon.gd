@@ -5,7 +5,7 @@ var timer: Timer = null
 
 func _ready():
 	timer = Timer.new()
-	timer.wait_time = 4
+	timer.wait_time = 6
 	timer.one_shot = true
 	add_child(timer)
 	

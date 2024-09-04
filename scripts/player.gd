@@ -8,7 +8,7 @@ var timer: Timer = null
 
 func _ready():
 	timer = Timer.new()
-	timer.wait_time = 1
+	timer.wait_time = 2
 	timer.one_shot = true
 	add_child(timer)
 	
@@ -31,11 +31,13 @@ func _physics_process(_delta: float) -> void:
 
 		move_and_slide()
 
+
 func get_hit():
 	if (!stunned):
 		animated_sprite.play("hit")
 		stunned = true
 		timer.start() 
+
 
 func _on_timer_timeout():
 	animated_sprite.play("idle")
